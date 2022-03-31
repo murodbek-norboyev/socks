@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body>
+    <!-- 2-dars Condition rendering -->
+    <!-- Ushbu darsda biz Vue yordamida elementlarni shartli ravishda qanday ko'rsatishni o'rganamiz. -->
+
+    <div id="app">
+        <!-- Dinamik ma`lumot -->
+        <div class="product">
+            <div class="product-image">
+                <!-- Maʼlumotlar obyektimizdagi qiymatini 
+                    tegimizdagi qiymatga bogʻlash uchun v-bind:src yoki :src direktivasidan foydalanamiz -->
+                <img v-bind:src="image" :alt="altText" />
+            </div>
+            <div class="product-info">
+                <h1>{{ product }} <span></span></h1>
+                <a :href="productLink">{{ altText }}</a>
+
+
+                <!-- Ko'pincha veb-ilovada biz shartlar bajarilgan yoki bajarilmasligiga 
+                    qarab sahifada elementlar paydo bo'lishini xohlaymiz. Misol uchun, agar mahsulotimiz 
+                    stokda bo'lmasa, bizning sahifamizda uning mavjud emasligi ko'rsatilishi kerak. -->
+
+                <!-- 10 tadan ko`p bo`lsa  -->
+                <p v-if="inventory > 10">In Stock</p>
+
+                <!-- 10 ga teng yoki kichkina va 0 dan katta bo`lsa -->
+                <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+
+                <!-- false yoki 0 bo`lsa  -->
+                <p v-else>Out of Stock</p>
+
+
+                <!-- Agar ilovangizda elementni tez-tez yoqish va oʻchirmoqchi bo`lsangiz, 
+                    v-showd irektivasidan foydalaning. display: none css xususiyatini qo`shadi-->
+                <!-- <p v-show="inStock">In Stock</p> -->
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
