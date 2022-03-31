@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body>
+    <!-- 2-dars Attribute binding -->
+    <div id="app">
+        <!-- Dinamik ma`lumot -->
+        <div class="product">
+            <div class="product-image">
+                <!-- Maʼlumotlar obyektimizdagi qiymatini 
+                    tegimizdagi qiymatga bogʻlash uchun v-bind:src yoki :src direktivasidan foydalanamiz -->
+                <img v-bind:src="image" :alt="altText" />
+            </div>
+            <div class="product-info">
+                <h1>{{ product }}</h1>
+                <a :href="productLink">{{ altText }}</a>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
