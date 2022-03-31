@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body>
+    <div class="nav-bar"></div>
+    <!-- 4-dars List rendering -->
+    <!-- Ushbu darsda biz Vue yordamida elementlarni shartli ravishda qanday ko'rsatishni o'rganamiz. -->
+
+    <div id="app">
+        <!-- Dinamik ma`lumot -->
+        <div class="product">
+            <div class="product-image">
+                <!-- Maʼlumotlar obyektimizdagi qiymatini 
+                    tegimizdagi qiymatga bogʻlash uchun v-bind:src yoki :src direktivasidan foydalanamiz -->
+                <img v-bind:src="image" :alt="altText" />
+            </div>
+            <div class="product-info">
+                <h1>{{ product }} <span v-if="onSale">On Sale!</span></h1>
+                <a :href="productLink">{{ altText }}</a>
+
+                <!-- Ko'pincha veb-ilovada biz shartlar bajarilgan yoki bajarilmasligiga 
+                    qarab sahifada elementlar paydo bo'lishini xohlaymiz. Misol uchun, agar mahsulotimiz 
+                    stokda bo'lmasa, bizning sahifamizda uning mavjud emasligi ko'rsatilishi kerak. -->
+                <p v-if="inStock">In Stock</p>
+                <p v-else>Out of Stock</p>
+
+                <ul>
+                    <li v-for="detail in details">{{detail}}</li>
+                </ul>
+
+                <ul>
+                    <li v-for="size in sizes">{{size}}</li>
+                </ul>
+
+                <div v-for="variant in variants" :key="variant.variantId">
+                    <p>{{variant.variantColor}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
