@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body>
+    <div class="nav-bar"></div>
+    <!-- 5-dars -->
+    <!-- Ushbu darsda biz Vue yordamida elementlarni shartli ravishda qanday ko'rsatishni o'rganamiz. -->
+
+    <div id="app">
+        <div class="product">
+            <div class="product-image">
+                <img v-bind:src="image" :alt="altText" />
+            </div>
+
+            <div class="product-info">
+                <h1>{{ product }}</h1>
+
+                <p v-if="inStock">In Stock</p>
+                <p v-else>Out of Stock</p>
+
+                <ul>
+                    <li v-for="detail in details">{{detail}}</li>
+                </ul>
+
+                <!-- background-color asosida divlarni dinamik
+                 ravishda ( variant.variantColor ) bilan ranglarni o'rnatish uchun biz inline style foydalanmoqdamiz -->
+                <div class="color-box" v-for="variant in variants" :key="variant.variantId"
+                    :style="{backgroundColor: variant.variantColor}" @mouseover="updateProduct(variant.variantImage)">
+                    {{variant.variantColor}}
+                </div>
+                <!-- Bu mantiqiy bo'lsa false, biz foydalanuvchilarga "Savatga qo'shish" tugmasini bosishlariga ruxsat bermasligimiz kerak, 
+                    chunki savatga qo'shish uchun omborda mahsulot yo'q. Yaxshiyamki, o'rnatilgan HTML atributi mavjud, disabledu tugmani o'chirib qo'yadi. -->
+                <button v-on:click="addToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">Add to cart</button>
+
+                <div class="cart">
+                    <p>Cart ({{ cart }})</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
