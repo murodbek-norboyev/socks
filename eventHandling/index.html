@@ -24,26 +24,38 @@
                 <img v-bind:src="image" :alt="altText" />
             </div>
             <div class="product-info">
-                <h1>{{ product }} <span v-if="onSale">On Sale!</span></h1>
-                <a :href="productLink">{{ altText }}</a>
+                <h1>{{ product }}</h1>
 
-                <!-- Ko'pincha veb-ilovada biz shartlar bajarilgan yoki bajarilmasligiga 
-                    qarab sahifada elementlar paydo bo'lishini xohlaymiz. Misol uchun, agar mahsulotimiz 
-                    stokda bo'lmasa, bizning sahifamizda uning mavjud emasligi ko'rsatilishi kerak. -->
                 <p v-if="inStock">In Stock</p>
                 <p v-else>Out of Stock</p>
+                <p>Price: ${{ price }}</p>
 
                 <ul>
                     <li v-for="detail in details">{{detail}}</li>
                 </ul>
 
-                <ul>
-                    <li v-for="size in sizes">{{size}}</li>
-                </ul>
-
                 <div v-for="variant in variants" :key="variant.variantId">
-                    <p>{{variant.variantColor}}</p>
+                    <!-- bu yerda biz :image qiymatini yangilayapmiz. variantImage berilgan qimyatdan olmoqda -->
+                    <p @mouseover="updateProduct(variant.variantImage)">
+                        {{variant.variantColor}}
+                    </p>
                 </div>
+
+                <div class="cart">
+                    <p>Cart ({{ cart }})</p>
+                </div>
+
+                <div class="cart">
+                    <p>Total sums ({{ total }})</p>
+                </div>
+                <!-- Vuega ushbu tugmadagi voqealarni tinglayotganimizni qo`shamiz v-on deymiz va keyin biz tinglayotgan voqea turini belgilaymiz :click .
+                     Qo'shtirnoq ichida biz tugmani har bosish qiymatiga 1 qo'shadigan ifodadan foydalanamiz 
+               <button v-on:click="cart += 1">Add to cart</button>
+                 -->
+
+                <!-- bosganimizda, function ishga tushadi button, bu bizning tegimizda ko'rsatilayotgan addToCart qiymatini oshiradi -->
+                <button v-on:click="addToCart">Add to cart</button>
+                <button v-on:click="decrement">decrement </button>
             </div>
         </div>
     </div>
