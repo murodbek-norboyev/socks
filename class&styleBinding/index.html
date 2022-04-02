@@ -25,7 +25,7 @@
                 <h1>{{ product }}</h1>
 
                 <p v-if="inStock">In Stock</p>
-                <p v-else>Out of Stock</p>
+                <p v-else :style="{ 'text-decoration': 'line-through' }">Out of Stock</p>
 
                 <ul>
                     <li v-for="detail in details">{{detail}}</li>
@@ -38,7 +38,7 @@
                     {{variant.variantColor}}
                 </div>
                 <!-- Bu mantiqiy bo'lsa false, biz foydalanuvchilarga "Savatga qo'shish" tugmasini bosishlariga ruxsat bermasligimiz kerak, 
-                    chunki savatga qo'shish uchun omborda mahsulot yo'q. Yaxshiyamki, o'rnatilgan HTML atributi mavjud, disabledu tugmani o'chirib qo'yadi. -->
+                    chunki savatga qo'shish uchun omborda mahsulot yo'q. Yaxshiyamki, o'rnatilgan HTML atributi mavjud, disabled tugmani o'chirib qo'yadi. -->
                 <button v-on:click="addToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">Add to cart</button>
 
                 <div class="cart">
