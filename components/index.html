@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body>
+    <div class="nav-bar"></div>
+    <!-- 5-dars -->
+    <!-- Ushbu darsda biz Vue yordamida elementlarni shartli ravishda qanday ko'rsatishni o'rganamiz. -->
+
+    <div id="app">
+        <!-- Biz product komponentimizga rekvizit yoki maxsus premium atributni berdikx. 
+            Biz ushbu maxsus atributni misolimizdagi premium ma'lumotlarga bog'laymiz. -->
+        <product :premium="premium"></product>
+        <detail></detail>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
