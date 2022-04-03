@@ -12,8 +12,6 @@ body {
 
 .product {
   display: flex;
-  flex-flow: wrap;
-  padding: 1rem;
 }
 
 img {
@@ -24,13 +22,12 @@ img {
 }
 
 .product-image {
-  width: 80%;
+  flex-basis: 700px;
 }
 
-.product-image,
 .product-info {
   margin-top: 10px;
-  width: 50%;
+  flex-basis: 500px;
 }
 
 .color-box {
@@ -56,18 +53,13 @@ button {
   font-size: 14px;
 }
 
-button:not(:disabled) {
-  cursor: pointer;
-}
-
 .disabledButton {
   background-color: #d8d8d8;
 }
 
 .review-form {
-  width: 400px;
+  width: 30%;
   padding: 20px;
-  margin: 40px;
   border: 1px solid #d8d8d8;
 }
 
@@ -82,16 +74,6 @@ textarea {
   height: 60px;
 }
 
-.tab {
-  margin-left: 20px;
-  cursor: pointer;
-}
-
-.activeTab {
-  color: #16C0B0;
-  text-decoration: underline;
-}
-
-span {
-  font-size: 14px;
+.outOfStock {
+  text-decoration: line-through;
 }
