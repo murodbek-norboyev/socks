@@ -9,7 +9,6 @@ const app = Vue.createApp({
     methods: {
         updateCart(id) {
             this.cart.push(id)
-            console.log(id)
         },
     }
 })
@@ -88,11 +87,13 @@ app.component(
         },
         methods: {
             addToCart() {
-                this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId)
+                // emit hodisasi oraqali 
+                this.$emit('addToCart', this.variants[this.selectedVariant].variantId)
             },
             updateProduct(index) {
                 this.selectedVariant = index
             },
+            
         },
         computed: {
             // Qachon title chaqirilsa, u birlashadi brand va product yangi satrga aylanadi va satrni qaytaradi.
@@ -113,7 +114,7 @@ app.component(
                 } else {
                     return 2.99
                 }
-            }
+            },
         }
     }
 )
