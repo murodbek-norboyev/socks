@@ -25,18 +25,24 @@ app.component(
             </ul>
 
             <h3>Colors</h3>
-            <div class="color-box" v-for="(variant, index) in variants" :key="variant.variantId"
-                :style="{backgroundColor: variant.variantColor}" @mouseover="updateProduct(index)">
-                {{variant.variantColor}}
-            </div>
+          <div class="actions">
+          <div class="color-box" v-for="(variant, index) in variants" :key="variant.variantId"
+          :style="{backgroundColor: variant.variantColor}" @mouseover="updateProduct(index)">
+          {{variant.variantColor}}
+      </div>
 
-            <button v-on:click="addToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">Add to
-                cart</button>
+      <button v-on:click="addToCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">Add to
+          cart</button>
+
+      <button v-on:click="removeFromCart" :disabled="!inStock" :class="{ disabledButton: !inStock }">
+          Remove from cart
+      </button>
+      </div>
         </div>
-    </div>
+        </div>
+        <product-form :reviews="reviews"></product-form>
+        <product-review @review-submitted="addReview"></product-review>
 
-
-    <product-tabs :reviews="reviews"></product-tabs>
         `,
         data() {
             return {
@@ -68,6 +74,9 @@ app.component(
         methods: {
             addToCart() {
                 this.$emit('add-to-cart', this.variants[this.selectedVariant].variantId)
+            },
+            removeFromCart() {
+                this.$emit('remove-from-cart', this.variants[this.selectedVariant].variantId)
             },
             updateProduct(index) {
                 this.selectedVariant = index

@@ -18,15 +18,15 @@
             <p>Cart ({{ cart.length }})</p>
         </div>
 
-        <product :premium="premium" @add-to-cart="updateCart"></product>
+        <product :premium="premium" @add-to-cart="updateCart" @remove-from-cart="removeById"></product>
 
     </div>
 
 
     <script src="main.js"></script>
     <script src="components/Product.js"></script>
+    <script src="components/ProductForm.js"></script>
     <script src="components/ProductReview.js"></script>
-    <script src="components/ProductTabs.js"></script>
 
     <script>
         app.mount('#app')
